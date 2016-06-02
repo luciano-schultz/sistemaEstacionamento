@@ -1,0 +1,80 @@
+<?php
+
+namespace Application\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EntradaSaida
+ *
+ * @ORM\Table(name="entrada_saida", indexes={@ORM\Index(name="fk_entrada_saida_carro1_idx", columns={"carro_id"}), @ORM\Index(name="fk_entrada_saida_vaga1_idx", columns={"vaga_id"}), @ORM\Index(name="fk_entrada_saida_estacionamento1_idx", columns={"estacionamento_id"}), @ORM\Index(name="fk_entrada_saida_funcionario1_idx", columns={"funcionario_id"})})
+ * @ORM\Entity
+ */
+class EntradaSaida
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_hora_entrada", type="datetime", nullable=false)
+     */
+    private $dataHoraEntrada;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_hora_saida", type="datetime", nullable=true)
+     */
+    private $dataHoraSaida;
+
+    /**
+     * @var \Application\Entity\Carro
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Carro")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="carro_id", referencedColumnName="id")
+     * })
+     */
+    private $carro;
+
+    /**
+     * @var \Application\Entity\Vaga
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Vaga")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="vaga_id", referencedColumnName="id")
+     * })
+     */
+    private $vaga;
+
+    /**
+     * @var \Application\Entity\Estacionamento
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Estacionamento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="estacionamento_id", referencedColumnName="id")
+     * })
+     */
+    private $estacionamento;
+
+    /**
+     * @var \Application\Entity\Funcionario
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Funcionario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="funcionario_id", referencedColumnName="id")
+     * })
+     */
+    private $funcionario;
+
+
+}
+

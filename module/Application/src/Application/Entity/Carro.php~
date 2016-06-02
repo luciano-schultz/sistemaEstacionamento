@@ -1,0 +1,57 @@
+<?php
+
+namespace Application\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Carro
+ *
+ * @ORM\Table(name="carro", indexes={@ORM\Index(name="fk_carro_cliente_idx", columns={"cliente_id"})})
+ * @ORM\Entity
+ */
+class Carro
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="placa", type="string", length=8, nullable=false)
+     */
+    private $placa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="modelo", type="string", length=45, nullable=false)
+     */
+    private $modelo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cor", type="string", length=45, nullable=false)
+     */
+    private $cor;
+
+    /**
+     * @var \Application\Entity\Cliente
+     *
+     * @ORM\ManyToOne(targetEntity="Application\Entity\Cliente")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cliente_id", referencedColumnName="id")
+     * })
+     */
+    private $cliente;
+
+
+}
+

@@ -1,0 +1,34 @@
+
+<nav class="">
+  <ul class="pagination ">
+      <?php if (isset($this->previous)) { ?>
+    <li>
+      <a href="?pagina=<?php echo $this->previous ?>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <?php } ?>
+    
+    <?php foreach ($this->pagesInRange as $item): ?>
+    <?php if($this->current == $item): ?>
+
+            <li class="active"><a href="?pagina=<?php echo $item;?>"><?php echo $item;?></a></li>
+
+        <?php else: ?>
+
+            <li class=""><a href="?pagina=<?php echo $item;?>"><?php echo $item;?></a></li>
+
+        <?php endif; ?>
+    <?php endforeach;?>
+    
+    
+
+     <?php if (isset($this->next)) { ?>
+    <li>
+      <a href="?pagina=<?php echo $this->next ?>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    <?php } ?>
+  </ul>
+</nav>

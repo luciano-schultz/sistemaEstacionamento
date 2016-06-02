@@ -1,0 +1,80 @@
+<?php
+
+namespace Admin\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EntradaSaida
+ *
+ * @ORM\Table(name="entrada_saida", indexes={@ORM\Index(name="fk_entrada_saida_carro1_idx", columns={"carro_id"}), @ORM\Index(name="fk_entrada_saida_vaga1_idx", columns={"vaga_id"}), @ORM\Index(name="fk_entrada_saida_estacionamento1_idx", columns={"estacionamento_id"}), @ORM\Index(name="fk_entrada_saida_funcionario1_idx", columns={"funcionario_id"})})
+ * @ORM\Entity
+ */
+class EntradaSaida
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_hora_entrada", type="datetime", nullable=false)
+     */
+    private $dataHoraEntrada;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="data_hora_saida", type="datetime", nullable=true)
+     */
+    private $dataHoraSaida;
+
+    /**
+     * @var \Admin\Entity\Carro
+     *
+     * @ORM\ManyToOne(targetEntity="Admin\Entity\Carro")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="carro_id", referencedColumnName="id")
+     * })
+     */
+    private $carro;
+
+    /**
+     * @var \Admin\Entity\Estacionamento
+     *
+     * @ORM\ManyToOne(targetEntity="Admin\Entity\Estacionamento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="estacionamento_id", referencedColumnName="id")
+     * })
+     */
+    private $estacionamento;
+
+    /**
+     * @var \Admin\Entity\Funcionario
+     *
+     * @ORM\ManyToOne(targetEntity="Admin\Entity\Funcionario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="funcionario_id", referencedColumnName="id")
+     * })
+     */
+    private $funcionario;
+
+    /**
+     * @var \Admin\Entity\Vaga
+     *
+     * @ORM\ManyToOne(targetEntity="Admin\Entity\Vaga")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="vaga_id", referencedColumnName="id")
+     * })
+     */
+    private $vaga;
+
+
+}
+

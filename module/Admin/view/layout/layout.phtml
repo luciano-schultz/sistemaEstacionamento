@@ -1,0 +1,155 @@
+<?php echo $this->doctype(); ?>
+<?php
+        $full_name = $_SERVER['PHP_SELF'];
+        $name_array = explode('/',$full_name);
+        $count = count($name_array);
+        $page_name = $name_array[$count-2];
+    ?>
+
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('SE '. $this->translate('Sistema de Estacionamento'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath('css/style.css'))
+                        ->prependStylesheet($this->basePath('css/font-awesome.css'))
+                        ->prependStylesheet($this->basePath('css/bootstrap.css')) ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath('js/jquery-1.11.1.js'))
+            ->prependFile($this->basePath('js/bootstrap.js'))
+            
+        ; ?>
+
+    </head>
+    <body>
+            <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <strong>Email: </strong>luciano-sschultz@hotmail.com
+                    &nbsp;&nbsp;
+                    <strong>Suporte: </strong>(33)99120-5108
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- HEADER END-->
+    <div class="navbar navbar-inverse set-radius-zero">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+
+                    <img src="<?= $this->basePath('img/logo.png') ?>" alt="" />
+                </a>
+
+            </div>
+
+            <div class="left-div">
+                <div class="user-settings-wrapper">
+                    <ul class="nav">
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                                <span class="glyphicon glyphicon-user" style="font-size: 25px;"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-settings">
+                                <div class="media">
+                                    <a class="media-left" href="#">
+                                        <img src="<?= $this->basePath('img/64-64.jpg') ?>" alt="" class="img-rounded" />
+                                    </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">Jhon Deo Alex </h4>
+                                        <h5>Developer & Designer</h5>
+
+                                    </div>
+                                </div>
+                                <hr />
+                                <h5><strong>Personal Bio : </strong></h5>
+                                Anim pariatur cliche reprehen derit.
+                                <hr />
+                                <a href="#" class="btn btn-info btn-sm">Full Profile</a>&nbsp; <a href="login.html" class="btn btn-danger btn-sm">Logout</a>
+
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGO HEADER END-->
+    <section class="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="navbar-collapse collapse ">
+                        <ul id="menu-top" class="nav navbar-nav navbar-right">
+                            
+                            <li><a <?php if($page_name == 'index.php'){ ?> class="menu-top-active" <?php } ?> href="/">Dashboard</a></li>
+                            <li><a <?php if($page_name == 'cliente'){ ?> class="menu-top-active" <?php } ?> href="<?= $this->url('full-app',['controller'=>'cliente','action'=>'index']); ?>">CLIENTES</a></li>
+                            <li><a <?php if($page_name == 'funcionario'){ ?> class="menu-top-active" <?php } ?> href="<?= $this->url('full-app',['controller'=>'funcionario','action'=>'index']); ?>">FUNCIONARIO</a></li>
+                            <li><a <?php if($page_name == 'cargo'){ ?> class="menu-top-active" <?php } ?> href="<?= $this->url('full-app',['controller'=>'cargo','action'=>'index']); ?>">CARGOS</a></li>
+                            <li><a <?php if($page_name == 'login'){ ?> class="menu-top-active" <?php } ?> href="<?= $this->url('full-app',['controller'=>'login','action'=>'index']); ?>">USUARIOS</a></li>
+                            <li><a <?php if($page_name == 'estacionamento'){ ?> class="menu-top-active" <?php } ?> href="<?= $this->url('full-app',['controller'=>'estacionamento','action'=>'index']); ?>">ESTACIONAMENTOS</a></li>
+                            <li><a <?php if($page_name == 'vaga'){ ?> class="menu-top-active" <?php } ?> href="<?= $this->url('full-app',['controller'=>'vaga','action'=>'index']); ?>">VAGAS</a></li>
+                            <li><a href="blank.html">PREÇOS</a></li>
+                            <li><a <?php if($page_name == 'carro'){ ?> class="menu-top-active" <?php } ?> href="<?= $this->url('full-app',['controller'=>'carro','action'=>'index']); ?>">Veiculos</a></li>
+                            
+                            
+
+
+ 
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- MENU SECTION END-->
+    
+    
+
+            <?php echo $this->content; ?>
+
+    
+    
+            <!-- CONTENT-WRAPPER SECTION END-->
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            &copy; 2016 Desenvolvido por:  <a href="http://www.designbootstrap.com/" target="_blank">Luciano Schultz</a>
+                        </div>
+
+                    </div>
+                </div>
+            </footer>
+            <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath('js/respond.min.js'))
+            ->prependFile($this->basePath('js/html5shiv.js'))
+            
+        ; ?>
+            
+
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>

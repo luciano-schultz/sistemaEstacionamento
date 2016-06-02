@@ -1,0 +1,73 @@
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Clientes</h1>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="btn-group btn-novo col-md-12" role="group" aria-label="...">
+                <a href="<?= $this->url('full-app',['controller'=>'cliente','action'=>'inserir']); ?>" class="btn btn-primary">Cadastrar</a>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <?php echo $this->msg==false?'':getMensagem( $this->msg);?>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <!--    Hover Rows  -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Lista de Clientes
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nome</th>
+                                        <th>CPF</th>
+                                        <th>Telefone</th>
+                                        <th>Endereço</th>
+                                        <th>Editar</th>
+                                        <th>Excluir</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($this->paginator as $cliente): ?>
+                                        <tr>
+                                            <td><?php echo $cliente->getId() ?></td>
+                                            <td><?php echo $cliente->getNome() ?></td>
+                                            <td><?php echo $cliente->getCpf() ?></td>
+                                            <td><?php echo $cliente->getTelefone() ?></td>
+                                            <td><?php echo $cliente->getEndereco() ?></td>
+                                            <td><a href="<?=  $this->url('full-app',['controller'=>'cliente','action'=>'editar','id'=>$cliente->getId()]); ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                            <td><a href="<?=  $this->url('full-app',['controller'=>'cliente','action'=>'delete','id'=>$cliente->getId()]); ?>"><span class="glyphicon glyphicon-trash"></a></span></td>
+                                        </tr>
+                                    <?php endforeach; ?>        
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- End  Hover Rows  -->
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+           <?php echo $this->paginationControl($this->paginator, 'Sliding', 'partials/paginator', array('route' => 'home-sec/full-app'));?>
+        </div>
+    </div>
+    
+</div>
+
+

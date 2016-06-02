@@ -1,0 +1,71 @@
+
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Veiculos</h1>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="btn-group btn-novo col-md-12" role="group" aria-label="...">
+                <a href="<?= $this->url('full-app',['controller'=>'carro','action'=>'inserir']); ?>" class="btn btn-primary">Cadastrar</a>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <?php echo $this->msg==false?'':getMensagem( $this->msg);?>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <!--    Hover Rows  -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Lista de Veiculos
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Placa</th>
+                                        <th>Modelo</th>
+                                        <th>Cor</th>
+                                        <th>Cliente</th>
+                                        <th>Editar</th>
+                                        <th>Excluir</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($this->paginator as $cliente): ?>
+                                        <tr>
+                                            <td><?php echo $cliente->getPlaca() ?></td>
+                                            <td><?php echo $cliente->getModelo() ?></td>
+                                            <td><?php echo $cliente->getCor() ?></td>
+                                            <td><?php echo $cliente->getCliente()->getNome() ?></td>
+                                            <td><a href="<?=  $this->url('full-app',['controller'=>'carro','action'=>'editar','id'=>$cliente->getId()]); ?>"><span class="glyphicon glyphicon-pencil"></span></a></td>
+                                            <td><a href="<?=  $this->url('full-app',['controller'=>'carro','action'=>'delete','id'=>$cliente->getId()]); ?>"><span class="glyphicon glyphicon-trash"></a></span></td>
+                                        </tr>
+                                    <?php endforeach; ?>        
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- End  Hover Rows  -->
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+           <?php echo $this->paginationControl($this->paginator, 'Sliding', 'partials/paginator', array('route' => 'home-sec/full-app'));?>
+        </div>
+    </div>
+    
+</div>
+
+

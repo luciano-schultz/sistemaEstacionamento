@@ -1,0 +1,74 @@
+<?php
+
+namespace Admin\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Funcionario
+ *
+ * @ORM\Table(name="funcionario", indexes={@ORM\Index(name="fk_funcionario_cargo1_idx", columns={"cargo_id"}), @ORM\Index(name="fk_funcionario_login1_idx", columns={"login_id"})})
+ * @ORM\Entity(repositoryClass="Admin\Entity\Repository\Funcionario")
+ */
+class Funcionario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=45, nullable=false)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cpf", type="string", length=11, nullable=false)
+     */
+    private $cpf;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefone", type="string", length=45, nullable=false)
+     */
+    private $telefone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="endereco", type="string", length=45, nullable=false)
+     */
+    private $endereco;
+
+    /**
+     * @var \Admin\Entity\Cargo
+     *
+     * @ORM\ManyToOne(targetEntity="Admin\Entity\Cargo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cargo_id", referencedColumnName="id")
+     * })
+     */
+    private $cargo;
+
+    /**
+     * @var \Admin\Entity\Login
+     *
+     * @ORM\ManyToOne(targetEntity="Admin\Entity\Login")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="login_id", referencedColumnName="id")
+     * })
+     */
+    private $login;
+
+
+}
+

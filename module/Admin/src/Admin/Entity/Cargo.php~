@@ -1,0 +1,33 @@
+<?php
+
+namespace Admin\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Cargo
+ *
+ * @ORM\Table(name="cargo")
+  * @ORM\Entity(repositoryClass="Admin\Entity\Repository\Cargo") 
+ */
+class Cargo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipoCargo", type="string", length=45, nullable=true)
+     */
+    private $tipocargo;
+
+
+}
+
